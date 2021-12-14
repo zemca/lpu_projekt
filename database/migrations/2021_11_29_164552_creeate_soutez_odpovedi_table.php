@@ -18,19 +18,8 @@ class CreeateSoutezOdpovediTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('sod_id');
-            $table->primary('sod_id');
             $table->unsignedBigInteger('sot_id');
-            $table->foreign('sot_id')
-                ->references('sot_id')
-                ->on('soutez_otazky')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->string('sod_odp', 3);
             $table->tinyInteger('sod_zisk')
                 ->default(0);

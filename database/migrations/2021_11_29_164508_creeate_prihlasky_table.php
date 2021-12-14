@@ -18,19 +18,8 @@ class CreeatePrihlaskyTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('pr_id');
-            $table->primary('pr_id');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->unsignedBigInteger('za_id');
-            $table->foreign('za_id')
-                ->references('za_id')
-                ->on('zavody')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->string('pr_kategorie', 10);
             $table->float('pr_naklady', 6, 2)
                 ->default(0.00);

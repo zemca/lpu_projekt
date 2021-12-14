@@ -18,13 +18,7 @@ class CreeateObleceniTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('ako_id');
-            $table->primary('ako_id');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->string('ob_typ', 5);
             $table->string('ob_velikost', 16);
             $table->tinyInteger('ob_pocet')

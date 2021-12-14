@@ -18,19 +18,8 @@ class CreeateAkceKomentarTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('ako_id');
-            $table->primary('ako_id');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->unsignedBigInteger('ak_id');
-            $table->foreign('ak_id')
-                ->references('ak_id')
-                ->on('akce')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->dateTime('ako_datumcas');
             $table->text('ako_text');
         });

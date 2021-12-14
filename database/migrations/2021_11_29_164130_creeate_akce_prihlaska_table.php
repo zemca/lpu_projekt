@@ -18,19 +18,8 @@ class CreeateAkcePrihlaskaTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('pr_id');
-            $table->primary('pr_id');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->unsignedBigInteger('ak_id');
-            $table->foreign('ak_id')
-                ->references('ak_id')
-                ->on('akce')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->string('pr_kategorie', 255);
             $table->string('pr_poznamka', 255);
             $table->dateTime('pr_datum_prihlaseni');

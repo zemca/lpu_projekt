@@ -18,7 +18,6 @@ class CreeateSoutezOtazkyTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('sot_id');
-            $table->primary('sot_id');
             $table->date('sot_start');
             $table->date('sot_end');
             $table->text('sot_textot');

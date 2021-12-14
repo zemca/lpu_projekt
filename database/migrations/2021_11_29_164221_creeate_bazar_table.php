@@ -18,13 +18,7 @@ class CreeateBazarTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('bz_id');
-            $table->primary('bz_id');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->tinyInteger('bz_bzdopr')
                 ->default(0);
             $table->string('bz_doprdatum', 32)

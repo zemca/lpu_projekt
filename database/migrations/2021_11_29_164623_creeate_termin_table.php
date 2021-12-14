@@ -18,7 +18,6 @@ class CreeateTerminTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('te_id');
-            $table->primary('te_id');
             $table->date('te_datum')
                 ->nullable();
         });

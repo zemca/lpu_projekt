@@ -18,13 +18,7 @@ class CreeateAkcePrihlaskyDefTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('apd_id');
-            $table->primary('apd_id');
             $table->unsignedBigInteger('ak_id');
-            $table->foreign('ak_id')
-                ->references('ak_id')
-                ->on('akce')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->date('apd_konec_prihlasek');
             $table->string('apd_kategorie',255);
         });

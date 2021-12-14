@@ -18,19 +18,8 @@ class CreeatePrihlaskyvicTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('pr_id');
-            $table->primary('pr_id');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->unsignedBigInteger('za_id');
-            $table->foreign('za_id')
-                ->references('za_id')
-                ->on('zavody')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->string('pr_kategorie', 10);
             $table->tinyInteger('pr_ubytovani')
                 ->default(-1);
@@ -50,10 +39,10 @@ class CreeatePrihlaskyvicTable extends Migration
                 ->default(0);
             $table->tinyInteger('pr_potvrzeni')
                 ->default(0);
-            $table->text('pr_poznamka')
+            $table->text('pr_vzkaz')
                 ->nullable();
             $table->float('pr_vklad');
-            $table->dateTime('pr_datum_admin	')
+            $table->dateTime('pr_datum_admin')
                 ->nullable();
         });
     }

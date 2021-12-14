@@ -18,13 +18,7 @@ class CreeateVkladyTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('vk_id');
-            $table->primary('vk_id');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->tinyInteger('vk_status')
                 ->default(0);
             $table->float('vk_castka')

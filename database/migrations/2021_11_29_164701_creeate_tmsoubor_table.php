@@ -18,13 +18,7 @@ class CreeateTmsouborTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('tms_id');
-            $table->primary('tms_id');
             $table->unsignedBigInteger('tm_id');
-            $table->foreign('tm_id')
-                ->references('tm_id')
-                ->on('tmakce')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->tinyInteger('tms_poradi')
                 ->default(0);
             $table->string('tms_cesta', 255);

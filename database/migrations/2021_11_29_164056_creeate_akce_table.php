@@ -18,7 +18,6 @@ class CreeateAkceTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('ak_id');
-            $table->primary('ak_id');
             $table->tinyInteger('ak_status')
                 ->default(0);
             $table->smallInteger('ak_typ')
@@ -42,11 +41,6 @@ class CreeateAkceTable extends Migration
                 ->default(0);
             $table->string('ak_porada', 100);
             $table->unsignedBigInteger('ak_spravce');
-            $table->foreign('ak_spravce')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
         });
     }
 

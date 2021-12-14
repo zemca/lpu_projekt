@@ -18,7 +18,6 @@ class CreeateZavvicTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('za_id');
-            $table->primary('za_id');
             $table->tinyInteger('za_status')
                 ->default(0);
             $table->string('za_oris', 64)

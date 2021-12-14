@@ -18,20 +18,13 @@ class CreeateTmakceTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('tm_id');
-            $table->primary('tm_id');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->dateTime('tm_datum')
                 ->nullable();
             $table->string('tm_nazev', 255);
             $table->text('tm_popis');
             $table->tinyInteger('tm_status')
                 ->default(0);
-
         });
     }
 

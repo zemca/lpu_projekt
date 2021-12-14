@@ -18,7 +18,6 @@ class CreeateZebricekTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('ze_id');
-            $table->primary('ze_id');
             $table->string('ze_nazev', 20);
             $table->tinyInteger('ze_typ')
                 ->default(0);

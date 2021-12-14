@@ -18,7 +18,6 @@ class CreeateUzivateleTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('uz_id');
-            $table->primary('uz_id');
             $table->string('uz_jmeno', 24);
             $table->string('uz_prijmeni', 33);
             $table->string('uz_login', 10);

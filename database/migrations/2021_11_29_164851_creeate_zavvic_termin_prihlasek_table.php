@@ -18,13 +18,7 @@ class CreeateZavvicTerminPrihlasekTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('za_kat_id');
-            $table->primary('za_kat_id');
             $table->unsignedBigInteger('za_id');
-            $table->foreign('za_id')
-                ->references('za_id')
-                ->on('zavvic')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->date('konec_prihl');
             $table->text('vklad');
         });

@@ -18,13 +18,7 @@ class CreeateLoginCheckTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('lc_id');
-            $table->primary('lc_id');
             $table->unsignedBigInteger('lc_uzid');
-            $table->foreign('lc_uzid')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->string('lc_string', 128);
             $table->tinyInteger('lc_type');
         });

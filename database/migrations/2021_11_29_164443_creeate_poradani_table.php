@@ -18,13 +18,7 @@ class CreeatePoradaniTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('po_id');
-            $table->primary('po_id');
             $table->unsignedBigInteger('uz_id');
-            $table->foreign('uz_id')
-                ->references('uz_id')
-                ->on('uzivatele')
-                ->onUpdate('RESTRICT')
-                ->onDelete('CASCADE');
             $table->string('po_znak', 20);
             $table->string('po_poznamka', 255);
         });
