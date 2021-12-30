@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreeateChattrTable extends Migration
@@ -19,7 +20,7 @@ class CreeateChattrTable extends Migration
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('tr_id');
             $table->dateTime('tr_datum')
-                ->default('CURRENT_TIMESTAMP');
+                ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('tr_odkaz', 200);
             $table->string('tr_podpis', 35);
             $table->text('tr_text');

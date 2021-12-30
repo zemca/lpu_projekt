@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreeateDiskuzeTable extends Migration
@@ -19,7 +20,7 @@ class CreeateDiskuzeTable extends Migration
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('di_id');
             $table->dateTime('di_datum')
-                ->default('CURRENT_TIMESTAMP');
+                ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('di_nazev', 60);
             $table->string('di_podpis', 30);
             $table->text('di_text');

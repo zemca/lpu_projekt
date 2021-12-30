@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreeatePrihlaskyTable extends Migration
@@ -34,7 +35,7 @@ class CreeatePrihlaskyTable extends Migration
             $table->tinyInteger('pr_ucast')
                 ->default(0);
             $table->dateTime('pr_datum_prihlaseni')
-                ->default('CURRENT_TIMESTAMP');
+                ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('pr_datum_admin')
                 ->nullable();
         });

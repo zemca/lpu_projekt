@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreeateBazarTable extends Migration
@@ -30,7 +31,7 @@ class CreeateBazarTable extends Migration
             $table->integer('bz_rodic')
                 ->default(0);
             $table->dateTime('bz_datum')
-                ->default('CURRENT_TIMESTAMP');
+                ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('bz_nadpis', 255)
                 ->nullable();
             $table->text('bz_popis')

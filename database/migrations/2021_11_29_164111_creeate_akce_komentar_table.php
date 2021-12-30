@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreeateAkceKomentarTable extends Migration
@@ -21,7 +22,7 @@ class CreeateAkceKomentarTable extends Migration
             $table->unsignedBigInteger('uz_id');
             $table->unsignedBigInteger('ak_id');
             $table->dateTime('ako_datumcas')
-                ->default('CURRENT_TIMESTAMP');
+                ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->text('ako_text');
         });
     }

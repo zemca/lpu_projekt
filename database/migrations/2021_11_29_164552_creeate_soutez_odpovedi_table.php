@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreeateSoutezOdpovediTable extends Migration
@@ -24,7 +25,7 @@ class CreeateSoutezOdpovediTable extends Migration
             $table->tinyInteger('sod_zisk')
                 ->default(0);
             $table->dateTime('sod_datum')
-                ->default('CURRENT_TIMESTAMP');
+                ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('sod_ipadr', 50);
             $table->string('sod_host', 50);
             $table->tinyInteger('sod_tema')

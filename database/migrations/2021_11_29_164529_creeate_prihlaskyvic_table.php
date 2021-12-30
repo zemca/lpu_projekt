@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreeatePrihlaskyvicTable extends Migration
@@ -34,7 +35,7 @@ class CreeatePrihlaskyvicTable extends Migration
             $table->date('pr_datum');
             $table->string('pr_prijmeni', 33);
             $table->dateTime('pr_datumprihl')
-                ->default('CURRENT_TIMESTAMP');
+                ->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->tinyInteger('pr_terminprihl')
                 ->default(0);
             $table->tinyInteger('pr_potvrzeni')
