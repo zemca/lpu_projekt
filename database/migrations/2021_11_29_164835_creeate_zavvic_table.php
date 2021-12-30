@@ -25,16 +25,13 @@ class CreeateZavvicTable extends Migration
             $table->string('za_nazev', 100);
             $table->string('za_misto', 200);
             $table->string('za_termintext', 25);
-            $table->date('za_terminzac')
-                ->nullable();
+            $table->date('za_terminzac');
             $table->time('za_terminzac_cas')
                 ->default(0);
-            $table->date('za_konec_datum')
-                ->nullable();
+            $table->date('za_konec_datum');
             $table->time('za_konec_cas')
                 ->default(0);
             $table->string('za_oddil', 10);
-            $table->text('za_kateg1');
             $table->string('za_ubytpopis', 512);
             $table->string('za_ubyt', 255);
             $table->string('za_ubytvklad', 255);
@@ -50,7 +47,7 @@ class CreeateZavvicTable extends Migration
             $table->string('za_web', 100);
             $table->text('za_poznamka');
             $table->text('za_platba');
-            $table->tinyInteger('za_terminprihl')
+            $table->unsignedTinyInteger('za_terminprihl')
                 ->default(0);
             $table->integer('za_vedouci')
                 ->default(0);

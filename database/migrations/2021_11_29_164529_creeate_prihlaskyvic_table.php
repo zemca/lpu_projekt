@@ -31,10 +31,10 @@ class CreeatePrihlaskyvicTable extends Migration
                 ->default(-1);
             $table->text('pr_poznamka')
                 ->nullable();
-            $table->date('pr_datum')
-                ->nullable();
+            $table->date('pr_datum');
             $table->string('pr_prijmeni', 33);
-            $table->dateTime('pr_datumprihl');
+            $table->dateTime('pr_datumprihl')
+                ->default('CURRENT_TIMESTAMP');
             $table->tinyInteger('pr_terminprihl')
                 ->default(0);
             $table->tinyInteger('pr_potvrzeni')

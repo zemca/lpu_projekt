@@ -19,8 +19,9 @@ class CreeateZavvicTerminPrihlasekTable extends Migration
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('za_kat_id');
             $table->unsignedBigInteger('za_id');
-            $table->date('konec_prihl');
+            $table->unsignedTinyInteger('za_terminprihl');
             $table->text('vklad');
+            $table->text('za_kateg');
         });
     }
 

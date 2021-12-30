@@ -26,12 +26,10 @@ class CreeateAkceTable extends Migration
             $table->string('ak_misto', 200);
             $table->text('ak_popis');
             $table->text('ak_detail');
-            $table->date('ak_zacatek_datum')
-                ->nullable();
+            $table->date('ak_zacatek_datum');
             $table->time('ak_zacatek_cas')
                 ->default(0);
-            $table->date('ak_konec_datum')
-                ->nullable();
+            $table->date('ak_konec_datum');
             $table->time('ak_konec_cas')
                 ->default(0);
             $table->string('ak_externi_odkazy', 200);

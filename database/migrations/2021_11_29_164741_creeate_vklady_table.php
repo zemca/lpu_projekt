@@ -23,8 +23,7 @@ class CreeateVkladyTable extends Migration
                 ->default(0);
             $table->float('vk_castka')
                 ->nullable();
-            $table->date('vk_termin')
-                ->nullable();
+            $table->date('vk_termin');
             $table->string('vk_poznamka', 100)
                 ->nullable();
         });

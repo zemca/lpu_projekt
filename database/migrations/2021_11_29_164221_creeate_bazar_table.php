@@ -30,7 +30,7 @@ class CreeateBazarTable extends Migration
             $table->integer('bz_rodic')
                 ->default(0);
             $table->dateTime('bz_datum')
-                ->nullable();
+                ->default('CURRENT_TIMESTAMP');
             $table->string('bz_nadpis', 255)
                 ->nullable();
             $table->text('bz_popis')

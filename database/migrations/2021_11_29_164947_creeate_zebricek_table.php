@@ -21,8 +21,7 @@ class CreeateZebricekTable extends Migration
             $table->string('ze_nazev', 20);
             $table->tinyInteger('ze_typ')
                 ->default(0);
-            $table->date('ze_datum')
-                ->nullable();
+            $table->date('ze_datum');
             $table->tinyInteger('ze_status')
                 ->default(0);
         });

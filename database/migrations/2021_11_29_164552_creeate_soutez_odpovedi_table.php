@@ -24,7 +24,7 @@ class CreeateSoutezOdpovediTable extends Migration
             $table->tinyInteger('sod_zisk')
                 ->default(0);
             $table->dateTime('sod_datum')
-                ->nullable();
+                ->default('CURRENT_TIMESTAMP');
             $table->string('sod_ipadr', 50);
             $table->string('sod_host', 50);
             $table->tinyInteger('sod_tema')

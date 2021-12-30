@@ -27,14 +27,16 @@ class CreeatePrihlaskyTable extends Migration
                 ->default(0);
             $table->tinyInteger('pr_ubytovani')
                 ->default(0);
-            $table->date('pr_datum')
-                ->nullable();
+            $table->date('pr_datum');
             $table->string('pr_prijmeni', 33);
             $table->text('pr_poznamka')
                 ->nullable();
             $table->tinyInteger('pr_ucast')
                 ->default(0);
-            $table->dateTime('pr_datum_prihlaseni');
+            $table->dateTime('pr_datum_prihlaseni')
+                ->default('CURRENT_TIMESTAMP');
+            $table->dateTime('pr_datum_admin')
+                ->nullable();
         });
     }
 

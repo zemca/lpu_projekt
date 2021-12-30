@@ -26,16 +26,13 @@ class CreeateZavodyTable extends Migration
                 ->default(0);
             $table->string('za_nazev', 100);
             $table->string('za_misto', 200);
-            $table->date('za_termin')
-                ->nullable();
+            $table->date('za_termin');
             $table->time('za_termin_cas')
                 ->default(0);
-            $table->date('za_konec_datum')
-                ->nullable();
+            $table->date('za_konec_datum');
             $table->time('za_konec_cas')
                 ->default(0);
-            $table->date('za_konec_prihl')
-                ->nullable();
+            $table->date('za_konec_prihl');
             $table->tinyInteger('za_obdobi')
                 ->default(0);
             $table->string('za_oddil', 10);

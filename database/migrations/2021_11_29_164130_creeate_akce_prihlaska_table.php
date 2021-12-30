@@ -22,7 +22,8 @@ class CreeateAkcePrihlaskaTable extends Migration
             $table->unsignedBigInteger('ak_id');
             $table->string('pr_kategorie', 255);
             $table->string('pr_poznamka', 255);
-            $table->dateTime('pr_datum_prihlaseni');
+            $table->dateTime('pr_datum_prihlaseni')
+                ->default('CURRENT_TIMESTAMP');
             $table->tinyInteger('pr_ucast')
                 ->default(1);
         });

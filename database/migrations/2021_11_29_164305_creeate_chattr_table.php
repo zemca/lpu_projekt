@@ -19,7 +19,7 @@ class CreeateChattrTable extends Migration
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('tr_id');
             $table->dateTime('tr_datum')
-                ->nullable();
+                ->default('CURRENT_TIMESTAMP');
             $table->string('tr_odkaz', 200);
             $table->string('tr_podpis', 35);
             $table->text('tr_text');

@@ -20,7 +20,8 @@ class CreeateAkceKomentarTable extends Migration
             $table->id('ako_id');
             $table->unsignedBigInteger('uz_id');
             $table->unsignedBigInteger('ak_id');
-            $table->dateTime('ako_datumcas');
+            $table->dateTime('ako_datumcas')
+                ->default('CURRENT_TIMESTAMP');
             $table->text('ako_text');
         });
     }

@@ -18,9 +18,6 @@ class CreeateAdminTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_czech_ci';
             $table->id('ad_id');
-            $table->string('ad_login', 50);
-            $table->unique('ad_login');
-            $table->string('ad_heslo', 255);
             $table->tinyInteger('ad_prava');
             $table->unsignedBigInteger('uz_id');
         });

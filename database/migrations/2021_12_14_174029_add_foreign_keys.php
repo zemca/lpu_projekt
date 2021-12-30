@@ -190,6 +190,13 @@ class AddForeignKeys extends Migration
                 ->onUpdate('RESTRICT')
                 ->onDelete('CASCADE');
         });
+        Schema::table('soutez_otazky', function (Blueprint $table) {
+            $table->foreign('sot_autor')
+                ->references('uz_id')
+                ->on('uzivatele')
+                ->onUpdate('RESTRICT')
+                ->onDelete('CASCADE');
+        });
     }
 
     /**
@@ -267,6 +274,9 @@ class AddForeignKeys extends Migration
         Schema::table('zebprihl', function (Blueprint $table) {
             $table->dropForeign('zebprihl_uz_id_foreign');
             $table->dropForeign('zebprihl_ze_id_foreign');
+        });
+        Schema::table('soutez_otazky', function (Blueprint $table) {
+            $table->dropForeign('soutez_otazky_sot_autor_foreign');
         });
     }
 }

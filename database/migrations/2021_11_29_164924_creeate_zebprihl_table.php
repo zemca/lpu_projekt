@@ -21,7 +21,6 @@ class CreeateZebprihlTable extends Migration
             $table->unsignedBigInteger('uz_id');
             $table->unsignedBigInteger('ze_id');
             $table->string('zp_kategorie', 6);
-            $table->string('zp_prijmeni', 33);
         });
     }
 
