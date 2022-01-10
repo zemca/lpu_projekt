@@ -19,12 +19,20 @@ class CustomAuthController extends Controller
 
     public function customLogin(Request $request)
     {
+
+        ddd();
+
         $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'uz_login' => 'required',
+            'uz_heslo' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        //ddd($request);
+
+        $credentials = $request->only('uz_login', 'uz_heslo');
+
+        ddd(Auth);
+
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard')
                 ->withSuccess('Signed in');
@@ -35,25 +43,25 @@ class CustomAuthController extends Controller
 
 
 
-    public function registration()
-    {
-        return view('auth.registration');
-    }
-
-
-    public function customRegistration(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
-
-        $data = $request->all();
-        $check = $this->create($data);
-
-        return redirect("dashboard")->withSuccess('You have signed-in');
-    }
+//    public function registration()
+//    {
+//        return view('auth.registration');
+//    }
+//
+//
+//    public function customRegistration(Request $request)
+//    {
+//        $request->validate([
+//            'name' => 'required',
+//            'email' => 'required|email|unique:users',
+//            'password' => 'required|min:6',
+//        ]);
+//
+//        $data = $request->all();
+//        $check = $this->create($data);
+//
+//        return redirect("dashboard")->withSuccess('You have signed-in');
+//    }
 
 
     public function create(array $data)
