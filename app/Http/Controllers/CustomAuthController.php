@@ -20,18 +20,12 @@ class CustomAuthController extends Controller
     public function customLogin(Request $request)
     {
 
-        ddd();
-
         $request->validate([
             'uz_login' => 'required',
             'uz_heslo' => 'required',
         ]);
 
-        //ddd($request);
-
         $credentials = $request->only('uz_login', 'uz_heslo');
-
-        ddd(Auth);
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard')
@@ -40,7 +34,6 @@ class CustomAuthController extends Controller
 
         return redirect("login")->withSuccess('Login details are not valid');
     }
-
 
 
 //    public function registration()

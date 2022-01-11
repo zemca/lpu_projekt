@@ -58,4 +58,9 @@ class Uzivatel extends Authenticatable
     {
         return $this->uz_heslo;
     }
+
+    public function getAuthIdentifier()
+    {
+        return $this->uz_id;
+    }
 }
