@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Uzivatel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -82,5 +83,11 @@ class CustomAuthController extends Controller
         Auth::logout();
 
         return Redirect('login');
+    }
+
+    public function test() {
+        $uzivatel = Uzivatel::find(1);
+
+        ddd($uzivatel);
     }
 }
