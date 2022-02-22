@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\CustomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,17 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
 Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('/custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 //Route::get('/registration', [CustomAuthController::class, 'registration'])->name('register-user');
 //Route::post('/custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('/signout', [CustomAuthController::class, 'signOut'])->name('signout');
-Route::get('/test', [CustomAuthController::class, 'test'])->name('test');
+Route::get('/home', [CustomController::class, 'home'])->name('home');
+Route::get('/zavody', [CustomController::class, 'zavody'])->name('zavody');
+Route::get('/zavod/{zav_id}', [CustomController::class, 'zavod'])->name('zavod')->where('zav_id', '[0-9]+');
+Route::get('/vicedenniZavody', [CustomController::class, 'vicedenniZavody'])->name('vicedenniZavody');
+Route::get('/vicedenniZavod/{zav_id}', [CustomController::class, 'vicedenniZavod'])->name('vicedenniZavod')->where('zav_id', '[0-9]+');
+Route::get('/zavodLogin/{zav_id}', [CustomController::class, 'zavodLogin'])->name('zavodLogin')->where('zav_id', '[0-9]+');
+Route::post('/zavodLoginPost', [CustomController::class, 'zavodLoginPost'])->name('zavodLoginPost');
+Route::get('/vicedenniZavodLogin/{zav_id}', [CustomController::class, 'vicedenniZavodLogin'])->name('vicedenniZavodLogin')->where('zav_id', '[0-9]+');
+Route::post('/vicedenniZavodLoginPost', [CustomController::class, 'vicedenniZavodLoginPost'])->name('vicedenniZavodLoginPost');

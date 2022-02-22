@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aktuality;
+use App\Models\Prihlasky;
+use App\Models\Prihlaskyvic;
 use App\Models\Uzivatel;
+use App\Models\Zavody;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CustomController;
 
 class CustomAuthController extends Controller
 {
 
     public function index()
     {
-        return view('auth.login');
+        if($this->isLogout() === true)
+            return view('auth.login');
+        else
+            return $this->isLogout();
     }
 
 
@@ -29,7 +37,7 @@ class CustomAuthController extends Controller
         $credentials = $request->only('uz_login', 'uz_heslo');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('home')
                 ->withSuccess('Signed in');
         }
 
@@ -68,16 +76,6 @@ class CustomAuthController extends Controller
     }
 
 
-    public function dashboard()
-    {
-        if(Auth::check()){
-            return view('dashboard');
-        }
-
-        return redirect("login")->withSuccess('You are not allowed to access');
-    }
-
-
     public function signOut() {
         Session::flush();
         Auth::logout();
@@ -85,9 +83,25 @@ class CustomAuthController extends Controller
         return Redirect('login');
     }
 
-    public function test() {
-        $uzivatel = Uzivatel::find(1);
 
-        ddd($uzivatel);
+    public function isLogin()
+    {
+        if(Auth::check()){
+            return true;
+        }
+        else {
+            return redirect()->action([CustomAuthController::class, 'index'])->withErrors('You are not allowed to access');
+        }
+    }
+
+
+    public function isLogout()
+    {
+        if(Auth::check()){
+            return redirect()->action([CustomController::class, 'home'])->withErrors('You are already login');
+        }
+        else {
+            return true;
+        }
     }
 }
