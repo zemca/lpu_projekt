@@ -52,10 +52,12 @@
                                 @endif
                             </td>
                             <td>
-                                @if($zavod->prihlaskyvic->where('uz_id', $uzivatel->getAuthIdentifier())->first() != null)
-                                    Přihlášen
-                                @else
+                                @if($zavod->prihlaskyvic->where('uz_id', $uzivatel->getAuthIdentifier())->first() == null)
                                     Nepřihlášen
+                                @elseif($zavod->prihlaskyvic->where('uz_id', $uzivatel->getAuthIdentifier())->first()->pr_potvrzeni != 1)
+                                    <span class="text-danger">Zaplatit</span>
+                                @else
+                                    Přihlášen
                                 @endif
                             </td>
                             <td><a href="{{url("vicedenniZavod/" . $zavod->za_id)}}">Detail</a></td>

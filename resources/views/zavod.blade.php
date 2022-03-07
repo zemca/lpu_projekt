@@ -9,7 +9,13 @@
             <dt>Datum</dt>
             <dd>{{str_replace('-', '.', (date('d-m-Y', strtotime($zavod->za_termin))))}}</dd>
             <dt>Konec přihlášek</dt>
-            <dd>{{str_replace('-', '.', (date('d-m-Y', strtotime($zavod->za_konec_prihl))))}}</dd>
+            <dd>
+                @if($zavod->za_status == 0)
+                    {{str_replace('-', '.', (date('d-m-Y', strtotime($zavod->za_konec_prihl))))}}
+                @else
+                    <span class="text-danger">{{str_replace('-', '.', (date('d-m-Y', strtotime($zavod->za_konec_prihl))))}}</span>
+                @endif
+            </dd>
             <dt>Místo</dt>
             <dd>
                 @if($zavod->za_misto == null)
@@ -73,11 +79,9 @@
             <dt>Klubová přihláška</dt>
             <dd>!!!!!!!!!!!!!!!!!!!!!!!!!</dd>
             <dt>Kategorie / Klubový vklad (Kč)</dt>
-            <dd>
-                @foreach($zavod->zavody_kategorie as $kat)
-                    {{$kat->kategorie}} / {{$kat->vklad}}
-                @endforeach
-            </dd>
+            @foreach($zavod->zavody_kategorie as $kat)
+                <dd>{{$kat->kategorie}} / {{$kat->vklad}}</dd>
+            @endforeach
             @if($zavod->za_ubytovani == 1 or $zavod->za_ubytovani == 2)
                 <dt>Klubové ubytování (Kč)</dt>
                 <dd>{{$zavod->za_cena_ubytovani}}</dd>
@@ -85,15 +89,19 @@
                 <dt>Ubytování</dt>
                 <dd>Na tento závod klub ubytování nezajišťuje.</dd>
             @endif
-{{--            <dt></dt>--}}
-{{--            <dd>{{}}</dd>--}}
-{{--            <dt></dt>--}}
-{{--            <dd>{{}}</dd>--}}
         </dl>
-        @if($zavod->prihlasky->where('uz_id', $uzivatel->getAuthIdentifier())->first() == null)
-            <h4>Na tento závod nejste přihlášeni. <a href="#">Přihlásit se!</a></h4>
+        @if($zavod->za_status == 0)
+            @if($zavod->prihlasky->where('uz_id', $uzivatel->getAuthIdentifier())->first() == null)
+                <h5>Na tento závod nejste přihlášeni. <a class="btn btn-primary btn-block" href="{{url("/zavodLogin/" . $zavod->za_id)}}">Přihlásit se!</a></h5>
+            @else
+                <form method="POST" action="{{ route("zavodLogoutPost") }}">
+                    @csrf
+                    <input type="hidden" name="za_id" id="za_id" value="{{$zavod->za_id}}">
+                    <h5>Na tento závod jste již přihlášeni. <button type="submit" class="btn btn-danger btn-block">Odhlásit se!</button></h5>
+                </form>
+            @endif
         @else
-            <h4>Na tento závod jste již přihlášeni. <a href="#">Odhlásit se!</a></h4>
+            <h5>Termín přihlášek <span class="text-danger">skončil</span>, v IS nelze provádět změny!</h5>
         @endif
     </div>
 @endsection

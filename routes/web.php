@@ -30,5 +30,6 @@ Route::get('/vicedenniZavody', [CustomController::class, 'vicedenniZavody'])->na
 Route::get('/vicedenniZavod/{zav_id}', [CustomController::class, 'vicedenniZavod'])->name('vicedenniZavod')->where('zav_id', '[0-9]+');
 Route::get('/zavodLogin/{zav_id}', [CustomController::class, 'zavodLogin'])->name('zavodLogin')->where('zav_id', '[0-9]+');
 Route::post('/zavodLoginPost', [CustomController::class, 'zavodLoginPost'])->name('zavodLoginPost');
+Route::post('/zavodLogoutPost', [CustomController::class, 'zavodLogoutPost'])->name('zavodLogoutPost');
 Route::get('/vicedenniZavodLogin/{zav_id}', [CustomController::class, 'vicedenniZavodLogin'])->name('vicedenniZavodLogin')->where('zav_id', '[0-9]+');
 Route::post('/vicedenniZavodLoginPost', [CustomController::class, 'vicedenniZavodLoginPost'])->name('vicedenniZavodLoginPost');

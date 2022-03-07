@@ -28,6 +28,9 @@
                             <a class="nav-link" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('zavody') }}">Zavody</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('signout') }}">Logout</a>
                         </li>
                     @endguest
@@ -36,11 +39,11 @@
         </div>
     </nav>
 </header>
-<main>
+<main style="min-height: 740px">
     @yield('content')
 </main>
 <footer>
-    <nav class="navbar navbar-light navbar-expand-lg mb-5" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-light navbar-expand-lg mt-5" style="background-color: #e3f2fd; height: 55Px">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

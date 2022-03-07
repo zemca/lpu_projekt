@@ -9,7 +9,13 @@
             <dt>Datum</dt>
             <dd>{{str_replace('-', '.', (date('d-m-Y', strtotime($zavod->za_terminzac))))}}</dd>
             <dt>Konec přihlášek</dt>
-            <dd>{{str_replace('-', '.', (date('d-m-Y', strtotime($zavod->za_konec_prihl))))}}</dd>
+            <dd>
+                @if($zavod->za_status == 0)
+                    {{str_replace('-', '.', (date('d-m-Y', strtotime($zavod->za_konec_prihl))))}}
+                @else
+                    <span class="text-danger">{{str_replace('-', '.', (date('d-m-Y', strtotime($zavod->za_konec_prihl))))}}</span>
+                @endif
+            </dd>
             <dt>Místo</dt>
             <dd>
                 @if($zavod->za_misto == null)
@@ -88,10 +94,15 @@
             @endif
 
         </dl>
-        @if($zavod->prihlaskyvic->where('uz_id', $uzivatel->getAuthIdentifier())->first() == null)
-            <h4>Na tento závod nejste přihlášeni. <a href="#">Přihlásit se!</a></h4>
+        @if($zavod->za_status == 0)
+            @if($zavod->prihlaskyvic->where('uz_id', $uzivatel->getAuthIdentifier())->first() == null)
+                <h4>Na tento závod nejste přihlášeni. <a href="#">Přihlásit se!</a></h4>
+            @else
+                <h4>Na tento závod jste již přihlášeni. <a href="#">Odhlásit se!</a></h4>
+            @endif
         @else
-            <h4>Na tento závod jste již přihlášeni. <a href="#">Odhlásit se!</a></h4>
+            <h5>Termín přihlášek <span class="text-danger">skončil</span>, v IS nelze provádět změny!</h5>
         @endif
+
     </div>
 @endsection
