@@ -7,7 +7,7 @@
         <p>
             K přihlášce, změně přihlášky a k dalším informacím o závodu se dostanete přes <strong>Detail</strong> vybraného závodu. Pokud je datum <strong>Konec přihlášek</strong> označeno <span class="text-danger">červeně</span>, tak v IS už přihlášku nemůžete měnit. <strong>Přihlášky na více závodů najednou</strong> najdete na této stránce dole.
         </p>
-        <table border="1" width="97%" cellpadding="3" cellspacing="0" align="center">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Název</th>

@@ -169,7 +169,7 @@ class CustomController extends Controller
             if ($zavod == null)
                 abort(404);
             elseif ($prihlaska != null) {
-                //return redirect()->action(); // už jsi přihlášen, zpět na kartu závodu, nevím jak správně redirectnout
+                redirect()->action([CustomAuthController::class, '/zavod/' . $zav_id])->withErrors('You are already login');
             }
             else {
                 return view("zavodLogin", [
@@ -268,5 +268,70 @@ class CustomController extends Controller
 
     public function vicedenniZavodLoginPost(Request $request) {
 
+    }
+
+
+    public function user() {
+        if(Aut::isLogin() === true) {
+            $uzivatel = \auth()->user();
+
+            $chyba = null;
+
+            return view("user", [
+                'uzivatel' => $uzivatel,
+                'chyba' => $chyba
+            ]);
+        }
+        else {
+            return Aut::isLogin();
+        }
+    }
+
+    public function userDataChange(Request $request) {
+        if(Aut::isLogin() === true) {
+            $uzivatel = \auth()->user();
+
+            $chyba = null;
+
+            if($request->input('email') != null) {
+                $uzivatel->uz_email = $request->input('email');
+
+                if($request->input('phone') != null) {
+                    $uzivatel->uz_mobil = $request->input('phone');
+                }
+                if($request->input('hrEmail') != null) {
+                    $uzivatel->uz_maillist = 1;
+                }
+                else {
+                    $uzivatel->uz_maillist = 0;
+                }
+                if($request->input('trInfo')) {
+                    $uzivatel->uz_mailtrenink = 1;
+                }
+                else {
+                    $uzivatel->uz_mailtrenink = 0;
+                }
+                if($request->input('password1') != null) {
+                    if($request->input('password1') === $request->input('password2')) {
+                        $uzivatel->uz_heslo = bcrypt($request->input('password1'));
+                    }
+                    else {
+                        $chyba = "Zadaná hesla se neshodují";
+                    }
+                }
+            }
+            else
+                $chyba = "Nezadali jste žádný email";
+
+            $uzivatel->save();
+
+            return view("user", [
+                'uzivatel' => $uzivatel,
+                'chyba' => $chyba
+            ]);
+        }
+        else {
+            return Aut::isLogin();
+        }
     }
 }

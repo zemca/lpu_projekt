@@ -33,3 +33,5 @@ Route::post('/zavodLoginPost', [CustomController::class, 'zavodLoginPost'])->nam
 Route::post('/zavodLogoutPost', [CustomController::class, 'zavodLogoutPost'])->name('zavodLogoutPost');
 Route::get('/vicedenniZavodLogin/{zav_id}', [CustomController::class, 'vicedenniZavodLogin'])->name('vicedenniZavodLogin')->where('zav_id', '[0-9]+');
 Route::post('/vicedenniZavodLoginPost', [CustomController::class, 'vicedenniZavodLoginPost'])->name('vicedenniZavodLoginPost');
+Route::get('/user', [CustomController::class, 'user'])->name('user');
+Route::post('/userDataChange', [CustomController::class, 'userDataChange'])->name('userDataChange');

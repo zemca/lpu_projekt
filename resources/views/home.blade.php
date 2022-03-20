@@ -14,9 +14,9 @@
         @if($prihlasky->count() === 0)
             <h4 align="center">Nejste přihlášeni na žádné závody.</h4>
         @else
-            <h3 align="center">Jste přihlášeni na tyto závody:</h3>
-            <table border="1" width="95%" cellpadding="" align="center">
-                <thead>
+            <h3 class="mb-4 mt-5" align="center">Jste přihlášeni na tyto závody:</h3>
+            <table class="table table-bordered">
+                <thead class="thead-light">
                     <tr>
                         <th>Název závodu</th>
                         <th>Datum závodu</th>
@@ -105,8 +105,8 @@
         @if($prihlaskyvic->count() === 0)
             <h4 align="center">Nejste přihlášeni na žádné vícedenní závody.</h4>
         @else
-            <h3 align="center">Jste přihlášeni na tyto vícedenní závody:</h3>
-            <table border="1" width="95%" cellpadding="" align="center">
+            <h3 class="mb-4 mt-5" align="center">Jste přihlášeni na tyto vícedenní závody:</h3>
+            <table class="table table-bordered">
                 <thead>
                     <TR>
                         <th align="center">Název závodu</th>
@@ -172,9 +172,9 @@
         @if($akce->count() === 0)
             <h4 align="center">Nejste přihlášeni na žádnou další akci.</h4>
         @else
-            <h3 align="center">Jste přihlášeni na tyto ostatní akce:</h3>
+            <h3 class="mb-4 mt-5" align="center">Jste přihlášeni na tyto ostatní akce:</h3>
 
-            <table border="1" width="95%" cellpadding="" align="center">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Název akce</th>

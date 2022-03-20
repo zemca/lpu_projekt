@@ -10,7 +10,7 @@
         <p>
             Vklady za vícedenní závody se strhávají z konta v IS. Zajistěte si na kontě dostatečný zůstatek. Vedoucích vícedenních závodů jsou potřeba až na samotných závodech (vyzvednout doklad na prezentaci a doručit Béďovi, rozdat ubytovací pásky atd.).
         </p>
-        <table border="1" width="97%" cellpadding="3" cellspacing="0" align="center">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Název</th>
