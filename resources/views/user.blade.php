@@ -7,6 +7,8 @@
             <div class="cart">
                 @if($chyba != null)
                     <p class="text-danger">{{$chyba}}</p>
+                @elseif($uspech != null)
+                    <p class="text-success">{{$uspech}}</p>
                 @endif
                 <form method="POST" action="{{ route("userDataChange") }}">
                     @csrf

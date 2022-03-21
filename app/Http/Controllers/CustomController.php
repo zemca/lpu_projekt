@@ -39,11 +39,19 @@ class CustomController extends Controller
                 ->where('pr_ucast', '=', 0)
                 ->where('uz_id', $uzivatel->getAuthIdentifier());
 
-            for ($i = 0; $i < $akceAll->count(); $i++) {
-                $akceAll[$i]->ak_zacatek_datum = $akceAll[$i]->akce()->first()->ak_zacatek_datum;
+            $akceFiltr = [];
+
+            foreach ($akceAll as $item) {
+                $akceFiltr[] = $item;
             }
 
-            $akceAll = $akceAll
+            for ($i = 0; $i < count($akceFiltr); $i++) {
+                $akceFiltr[$i]->ak_zacatek_datum = $akceFiltr[$i]->akce()->first()->ak_zacatek_datum;
+            }
+
+            $akceFiltrColection = collect($akceFiltr);
+
+            $akceFiltrColection = $akceFiltrColection
                 ->where('ak_zacatek_datum', '>=', Carbon::now())
                 ->sortBy('ak_zacatek_datum');
 
@@ -52,7 +60,7 @@ class CustomController extends Controller
                 'aktuality' => $aktuality,
                 'prihlasky' => $prihlasky,
                 'prihlaskyvic' => $prihlaskyvic,
-                'akce' => $akceAll
+                'akce' => $akceFiltrColection
             ]);
         }
         else {
@@ -276,10 +284,12 @@ class CustomController extends Controller
             $uzivatel = \auth()->user();
 
             $chyba = null;
+            $uspech = null;
 
             return view("user", [
                 'uzivatel' => $uzivatel,
-                'chyba' => $chyba
+                'chyba' => $chyba,
+                'uspech' => $uspech
             ]);
         }
         else {
@@ -291,7 +301,9 @@ class CustomController extends Controller
         if(Aut::isLogin() === true) {
             $uzivatel = \auth()->user();
 
+            $kod = true;
             $chyba = null;
+            $uspech = null;
 
             if($request->input('email') != null) {
                 $uzivatel->uz_email = $request->input('email');
@@ -317,17 +329,24 @@ class CustomController extends Controller
                     }
                     else {
                         $chyba = "Zadaná hesla se neshodují";
+                        $kod = false;
                     }
                 }
             }
             else
                 $chyba = "Nezadali jste žádný email";
 
-            $uzivatel->save();
+            if($uzivatel->save() and $kod) {
+                $uspech = "Uložení proběhlo úspěšně.";
+            }
+            else if($kod) {
+                $chyba = "Uložení selhalo, zkuste to prosím později";
+            }
 
             return view("user", [
                 'uzivatel' => $uzivatel,
-                'chyba' => $chyba
+                'chyba' => $chyba,
+                'uspech' => $uspech
             ]);
         }
         else {
