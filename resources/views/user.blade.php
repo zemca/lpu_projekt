@@ -3,7 +3,7 @@
 @section('content')
     <div class="login-form">
         <div class="cotainer">
-            <h3>Detail uživatele</h3>
+            <h3>Detail uživatele: {{$uzivatel->uz_jmeno}} {{$uzivatel->uz_prijmeni}}</h3>
             <div class="cart">
                 @if($chyba != null)
                     <p class="text-danger">{{$chyba}}</p>

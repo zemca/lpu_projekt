@@ -31,9 +31,17 @@ class CustomController extends Controller
                 ->where('pr_datum', '>=', Carbon::now())
                 ->sortBy('pr_datum');
 
-            for ($i=0; $i < $prihlaskyvic->count(); $i++) {
-                $prihlaskyvic[$i]->poleUbytovani = explode(";",$prihlaskyvic[$i]->zavvic->za_ubyt);
+            $prihlaskyvicArray = [];
+
+            foreach ($prihlaskyvic as $item) {
+                $prihlaskyvicArray[] = $item;
             }
+
+            for ($i=0; $i < count($prihlaskyvicArray); $i++) {
+                $prihlaskyvicArray[$i]->poleUbytovani = explode(";",$prihlaskyvicArray[$i]->zavvic->za_ubyt);
+            }
+
+            $prihlaskyvicCollection = collect($prihlaskyvicArray);
 
             $akceAll = Akce_prihlaska::all()
                 ->where('pr_ucast', '=', 0)
@@ -59,7 +67,7 @@ class CustomController extends Controller
                 'uzivatel' => $uzivatel,
                 'aktuality' => $aktuality,
                 'prihlasky' => $prihlasky,
-                'prihlaskyvic' => $prihlaskyvic,
+                'prihlaskyvic' => $prihlaskyvicCollection,
                 'akce' => $akceFiltrColection
             ]);
         }
