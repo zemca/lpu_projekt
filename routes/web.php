@@ -36,3 +36,6 @@ Route::post('/userDataChange', [CustomController::class, 'userDataChange'])->nam
 Route::get('/info', function () {
     echo phpinfo();
 });
+Route::get('/db', function () {
+    echo \App\Models\Zavody::all();
+});
