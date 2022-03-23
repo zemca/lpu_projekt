@@ -96,9 +96,9 @@
         </dl>
         @if($zavod->za_status == 0)
             @if($zavod->prihlaskyvic->where('uz_id', $uzivatel->getAuthIdentifier())->first() == null)
-                <h4>Na tento závod nejste přihlášeni. <a href="#">Přihlásit se!</a></h4>
+                <h4>Na tento závod nejste přihlášeni. <a href="#" class="btn btn-primary btn-block">Přihlásit se!</a></h4>
             @else
-                <h4>Na tento závod jste již přihlášeni. <a href="#">Odhlásit se!</a></h4>
+                <h4>Na tento závod jste již přihlášeni. <a href="#" class="btn btn-danger btn-block">Odhlásit se!</a></h4>
             @endif
         @else
             <h5>Termín přihlášek <span class="text-danger">skončil</span>, v IS nelze provádět změny!</h5>
