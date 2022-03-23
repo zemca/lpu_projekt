@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Http;
 class CustomController extends Controller
 {
     public function home() {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
             $uzivatel = \auth()->user();
 
             $aktuality = Aktuality::all()->where('ak_znak', '=', 0)->sortByDesc('ak_id');
@@ -72,13 +72,13 @@ class CustomController extends Controller
             ]);
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
 
     public function zavody() {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
             $uzivatel = \auth()->user();
 
             $zavody = Zavody::all()
@@ -94,13 +94,13 @@ class CustomController extends Controller
             ]);
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
 
     public function zavod($zav_id) {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
             $uzivatel = \auth()->user();
 
             $zavod = Zavody::where('za_id', $zav_id)->first();
@@ -115,13 +115,13 @@ class CustomController extends Controller
             }
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
 
     public function vicedenniZavody() {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
             $uzivatel = \auth()->user();
 
             $zavody = Zavvic::all()
@@ -141,13 +141,13 @@ class CustomController extends Controller
             ]);
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
 
     public function vicedenniZavod($zav_id) {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
             $uzivatel = \auth()->user();
 
             $zavod = Zavvic::where('za_id', $zav_id)->first();
@@ -166,13 +166,13 @@ class CustomController extends Controller
             }
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
 
     public function zavodLogin($zav_id) {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
             $uzivatel = \auth()->user();
 
             $zavod = Zavody::where('za_id', $zav_id)->first();
@@ -195,13 +195,13 @@ class CustomController extends Controller
             }
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
 
     public function zavodLoginPost(Request $request) {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
 
             $uzivatel = \auth()->user();
 
@@ -228,13 +228,13 @@ class CustomController extends Controller
             ]);
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
 
     public function zavodLogoutPost(Request $request) {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
 
             $uzivatel = \auth()->user();
 
@@ -256,13 +256,13 @@ class CustomController extends Controller
             ]);
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
 
     public function vicedenniZavodLogin($zav_id) {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
             $uzivatel = \auth()->user();
 
             $zavod = Zavvic::where('za_id', $zav_id)->first();
@@ -277,7 +277,7 @@ class CustomController extends Controller
             }
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
@@ -288,7 +288,7 @@ class CustomController extends Controller
 
 
     public function user() {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
             $uzivatel = \auth()->user();
 
             $chyba = null;
@@ -301,12 +301,12 @@ class CustomController extends Controller
             ]);
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 
     public function userDataChange(Request $request) {
-        if(Aut::isLogin() === true) {
+        if((new CustomAuthController)->isLogin() === true) {
             $uzivatel = \auth()->user();
 
             $kod = true;
@@ -358,7 +358,7 @@ class CustomController extends Controller
             ]);
         }
         else {
-            return Aut::isLogin();
+            return (new CustomAuthController)->isLogin();
         }
     }
 }
