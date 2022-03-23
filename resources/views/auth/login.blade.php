@@ -8,6 +8,9 @@
                     <div class="card">
                         <h3 class="card-header text-center">Login</h3>
                         <div class="card-body">
+                            @if(session('status') == "Incorect")
+                                <p class="text-danger">Nesprávné přihlašovací údaje!</p>
+                            @endif
                             <form method="POST" action="{{ route('login.custom') }}">
                                 @csrf
                                 <div class="form-group mb-3">
