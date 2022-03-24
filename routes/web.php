@@ -33,3 +33,7 @@ Route::get('/vicedenniZavodLogin/{zav_id}', [CustomController::class, 'vicedenni
 Route::post('/vicedenniZavodLoginPost', [CustomController::class, 'vicedenniZavodLoginPost'])->name('vicedenniZavodLoginPost');
 Route::get('/user', [CustomController::class, 'user'])->name('user');
 Route::post('/userDataChange', [CustomController::class, 'userDataChange'])->name('userDataChange');
+Route::get('/db', function () {
+    echo \App\Models\Zavody::all();
+});
+
