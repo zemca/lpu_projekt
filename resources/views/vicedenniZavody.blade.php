@@ -8,7 +8,7 @@
             K přihlášce, změně přihlášky a k dalším informacím o závodu se dostanete přes <strong>Detail</strong> vybraného závodu. Pokud je datum <strong>Konec přihlášek</strong> označeno <span class="text-danger">červeně</span>, tak v IS už přihlášku nemůžete měnit.
         </p>
         <p>
-            Vklady za vícedenní závody se strhávají z konta v IS. Zajistěte si na kontě dostatečný zůstatek. Vedoucích vícedenních závodů jsou potřeba až na samotných závodech (vyzvednout doklad na prezentaci a doručit Béďovi, rozdat ubytovací pásky atd.).
+            Výcedení závody se platí vedoucímu. Vedoucích vícedenních závodů jsou potřeba až na samotných závodech (vyzvednout doklad na prezentaci a doručit Béďovi, rozdat ubytovací pásky atd.).
         </p>
         <table class="table table-bordered">
             <thead>

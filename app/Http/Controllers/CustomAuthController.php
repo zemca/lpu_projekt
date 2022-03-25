@@ -36,8 +36,6 @@ class CustomAuthController extends Controller
 
         $credentials = $request->only('uz_login', 'uz_heslo');
 
-        $credentials = ["uz_login" => "112233", "uz_heslo" => "111111"];
-
         if (Auth::attempt($credentials)) {
             return redirect()->intended('home')
                 ->withSuccess('Signed in');
